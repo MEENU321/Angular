@@ -17,12 +17,12 @@ export class PinnedNoteComponent implements OnInit {
   
 
   ngOnInit() {
-    this.mytoken=localStorage.getItem('token');
+    this.mytoken=localStorage.getItem('JwtToken');
     this.getNotes();
   }
 
   getNotes() {
-    console.log("token", this.mytoken);
+    console.log("JwtToken", this.mytoken);
     this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {
       this.notes = newNote;
     }
@@ -34,7 +34,7 @@ export class PinnedNoteComponent implements OnInit {
       data: note
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.noteService.updateNote(note).subscribe(response => {
+      this.noteService. updateNote(note).subscribe(response => {
         this.snackBar.open("Note updated successfully", "OK", {
           duration: 3000,
         });
@@ -50,7 +50,7 @@ export class PinnedNoteComponent implements OnInit {
       ...note,
       archive: true
     }
-    this.noteService.updateNote(newNote).subscribe(response => {
+    this.noteService. updateNote(newNote).subscribe(response => {
       this.snackBar.open("Sent to Archive ", "OK", {
         duration: 3000,
       });
@@ -68,7 +68,7 @@ export class PinnedNoteComponent implements OnInit {
        ...note,
       inTrash: true,
     }
-    this.noteService.updateNote(newNote).subscribe(response => {
+    this.noteService. updateNote(newNote).subscribe(response => {
       this.snackBar.open("Sent to Trash ", "OK", {
         duration: 3000,
       });

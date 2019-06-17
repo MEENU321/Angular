@@ -10,52 +10,58 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class NoteService {
+  createCollaborator(noteId: (noteId: any, id: any) => any, id: any) {
+    throw new Error("Method not implemented.");
+  }
+  removeCollaborateUser(noteId: any, id: any) {
+    throw new Error("Method not implemented.");
+  }
+  noteupdate(newNote: any) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private httpUtil: HttpService, private router: Router, public snackBar: MatSnackBar) { }
 
-  retrieveNotes(token):Observable<any>
-  {
-    var httpheaders = {
-      headers:new HttpHeaders({
+  retrieveNotes(token): Observable<any> {
+    let httpheaders = {
+      headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
-        'token': token
+        JwtToken: token
       })
     };
-    return this.httpUtil.getService(environment.note_url + 'note',httpheaders);
+    return this.httpUtil.getService(environment.note_url + 'viewnotes', httpheaders);
   }
 
   createNote(note): Observable<any> {
-    var token = localStorage.getItem('token');
-    var httpheaders = {
+    let token = localStorage.getItem('JwtToken');
+    let httpheaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'token': token
+        JwtToken: token
       })
     };
-    return this.httpUtil.postServiceForNoteCreate(environment.note_url + 'notecreate', httpheaders, note);
+    return this.httpUtil.postServiceForNoteCreate(environment.note_url + 'notecreate/' + token, httpheaders, note);
   }
-  updateNote(note)
-  {
-    var token = localStorage.getItem('token');
-    var httpheaders = {
+  updateNote(note) {
+    let token = localStorage.getItem('JwtToken');
+    const httpheaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'token': token
+        JwtToken: token
       })
     };
-    return this.httpUtil.putServiceForNoteUpdate(environment.note_url + 'noteupdate',note,httpheaders);
+    return this.httpUtil.putServiceForNoteUpdate(environment.note_url + 'noteupdate/' + token, note, httpheaders);
   }
 
-  deleteNote(noteId)
-  {
-    var token = localStorage.getItem('token');
-    var httpheaders = {
+  deleteNote(noteId) {
+    let token = localStorage.getItem('JwtToken');
+    let httpheaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'token': token
+        JwtToken: token
       })
     };
-    return this.httpUtil.deleteServiceForNoteDelete(environment.note_url + 'notedelete'+noteId,httpheaders);
+    return this.httpUtil.deleteServiceForNoteDelete(environment.note_url + 'notedelete' + noteId, httpheaders);
 }
 
 

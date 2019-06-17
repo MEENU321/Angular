@@ -37,21 +37,21 @@ export class LoginComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
-      console.log("invalid")
+      console.log('invalid');
     }
     console.log(user);
     this.userService.login(user).subscribe(response => {
       console.log(response);
 
-      console.log("login successfull");
-      localStorage.setItem('token', response.headers.get('token'));
+      console.log('login successfull');
+      localStorage.setItem('JwtToken', response.headers.get('JwtToken'));
       this.router.navigate(['/home']);
 
     },
     (error)=>{
-      console.log("Couldnt log in");
+      console.log('Couldnt log in');
 
     });
-    
+
   }
 }

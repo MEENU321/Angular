@@ -18,12 +18,12 @@ export class TrashedNotesComponent implements OnInit {
   
 
   ngOnInit() {
-this.mytoken=localStorage.getItem('token');
+this.mytoken=localStorage.getItem('JwtToken');
     this.getNotes();
   }
 
   getNotes() {
-    console.log("token", this.mytoken);
+    console.log("JwtToken", this.mytoken);
     this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {
       this.notes = newNote;
     }

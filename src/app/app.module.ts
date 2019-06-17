@@ -19,6 +19,8 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { ViewNoteComponent } from './view-note/view-note.component';
 import { NoteComponent } from './note/note.component';
 import { MoreButtonDirective } from './more-button.directive';
+import { CollaboratorComponent } from './collaborator/collaborator.component';
+
 
 
 
@@ -39,11 +41,16 @@ import { MoreButtonDirective } from './more-button.directive';
     PinnedNoteComponent,
     SideNavComponent,
     ViewNoteComponent,
-    
+
     NoteComponent,
-    
+
     MoreButtonDirective,
-    
+
+    CollaboratorComponent,
+
+  
+
+
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,7 @@ import { MoreButtonDirective } from './more-button.directive';
     BrowserAnimationsModule,
     MatCardModule,
     MatExpansionModule
-  
+
 
 
     
@@ -63,4 +70,4 @@ import { MoreButtonDirective } from './more-button.directive';
   providers: [{provide: MatDialogRef, useValue: {}},{ provide: MAT_DIALOG_DATA, useValue: [] }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+ class AppModule { }

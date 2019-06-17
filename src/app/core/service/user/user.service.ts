@@ -8,6 +8,15 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class UserService {
+  getUsers() {
+    throw new Error("Method not implemented.");
+  }
+  verifyEmail(emailId: any) {
+    throw new Error("Method not implemented.");
+  }
+  getCollaborateUser(userId: any) {
+    throw new Error("Method not implemented.");
+  }
   constructor(private httpUtil: HttpService,private router:Router ) { }
 
   login(user) {

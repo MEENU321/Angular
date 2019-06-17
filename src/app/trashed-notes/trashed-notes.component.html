@@ -28,15 +28,16 @@
           <button  mat-icon-button (click)=sendToArchive(note) matTooltip="Archive">
             <mat-icon>archive</mat-icon>
           </button>
+          <mat-menu #more="matMenu" ></mat-menu>
 
           <button mat-icon-button [matMenuTriggerFor]="more" matTooltip="more">
             <mat-icon>more_vert</mat-icon>
           </button>
+          <mat-menu #menu="matMenu" ></mat-menu>
 
           <button  mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>delete</mat-icon>
           </button>
-          <mat-menu #menu="matMenu">
             <button  mat-menu-item (click)=deleteNoteForever(note)>
               Delete Forever
             </button>
@@ -45,7 +46,6 @@
             </button>
             
           
-          </mat-menu>
          
           <button mat-icon-button matTooltip="undo">
             <mat-icon>undo</mat-icon>
